@@ -20,7 +20,7 @@ const LoginRegister = () => {
     window.onload = function () {
         //debugger;
         console.log(auth.token);
-        axios.get('http://mpsplayerportal-server.vercel.app/user/remember', {
+        axios.get('https://mpsplayerportal-server.vercel.app/user/remember', {
             params: {
                 remembertoken: auth.token
             }
@@ -29,7 +29,7 @@ const LoginRegister = () => {
                 function (response) {
                     console.log(response);
                     if (response.data.data._id === auth.token) {
-                        window.location.replace(`http://mpsplayerportal-client.vercel.app/CharacterSelection/:${response.data.data.userID}`)
+                        window.location.replace(`https://mpsplayerportal-client.vercel.app/CharacterSelection/:${response.data.data.userID}`)
                     }
                 })
             .catch(function (error) {
@@ -47,17 +47,17 @@ const LoginRegister = () => {
     };
 
     const termsconditions = () => {
-        window.open('http://mpsplayerportal-client.vercel.app/terms&conditions')
+        window.open('https://mpsplayerportal-client.vercel.app/terms&conditions')
     };
 
     const forgotpassword = () => {
-        window.open('http://mpsplayerportal-client.vercel.app/forgot')
+        window.open('https://mpsplayerportal-client.vercel.app/forgot')
     };
 
     //signup
     const handleRegister = (event) => {
         event.preventDefault();
-        axios.post('http://mpsplayerportal-server.vercel.app/user/signup', {
+        axios.post('https://mpsplayerportal-server.vercel.app/user/signup', {
             username: usernameRegister,
             email: emailRegister,
             password: passwordRegister
@@ -73,7 +73,7 @@ const LoginRegister = () => {
     //login
     const handleLogin = (event) => {
         event.preventDefault();
-        axios.get('http://mpsplayerportal-server.vercel.app/user/signin', {
+        axios.get('https://mpsplayerportal-server.vercel.app/user/signin', {
             params: {
                 username: usernameLogin,
                 password: passwordLogin

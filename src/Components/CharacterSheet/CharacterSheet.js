@@ -35,7 +35,7 @@ function CharacterSheet() {
 
     // Code to enhance SPA transitions
     useEffect(() => {
-        axios.get('http://mpsplayerportal-server.vercel.app/char/getchar', {
+        axios.get('https://mpsplayerportal-server.vercel.app/char/getchar', {
             params: {
                 ownerID: pageparams.id,
             }
@@ -60,7 +60,7 @@ function CharacterSheet() {
     //Back to list
     const handleBack = () => {
 
-        axios.put('http://mpsplayerportal-server.vercel.app/char/save', {
+        axios.put('https://mpsplayerportal-server.vercel.app/char/save', {
             params: {
                 data: charData,
                 char: pageparams.character,
@@ -73,7 +73,7 @@ function CharacterSheet() {
                 console.log(error);
             });
 
-        window.location.replace(`http://mpsplayerportal-client.vercel.app/CharacterSelection/${pageparams.id}`);
+        window.location.replace(`https://mpsplayerportal-client.vercel.app/CharacterSelection/${pageparams.id}`);
     };
 
     //Handle Experience
