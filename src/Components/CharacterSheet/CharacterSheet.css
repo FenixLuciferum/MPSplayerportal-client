@@ -1,0 +1,378 @@
+.character_sheet {
+    font-family: "Fenix", serif;
+    color: #fff;
+    backdrop-filter: blur(30px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.character_sheet input[type="number"] {
+    padding-left: 10px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    background: rgba(16,17,30,255);
+    color: #fff;
+    font-family: "Fenix", serif;
+    font-size: large;
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+}
+
+.character_sheet input[type="text"] {
+    text-align: center;
+    background: rgba(16,17,30,255);
+    color: #fff;
+    font-family: "Fenix", serif;
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+}
+
+.character_sheet textarea {
+    text-align: center;
+    background: rgba(16,17,30,255);
+    color: #fff;
+    font-family: "Fenix", serif;
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+}
+
+.backbutton {
+    height: 75px;
+    width: 210px;
+    position: relative;
+    background: rgba(113,113,133,0.4);
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.backbutton.hover {
+    height: 75px;
+    width: 210px;
+    position: relative;
+    background: rgba(193,13,33,1);
+    background: linear-gradient(180deg, rgba(193,13,33,1) 0%, rgba(52,0,150,1) 100%);
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    color: #fff;
+}
+
+.sheetwrapper{
+    display: flex;
+    padding: 10px;
+    column-gap: 10px;
+}
+
+.identity{
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    background: rgba(113,113,133,0.4);
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    padding: 10px;
+    align-items: justify;
+    margin-bottom: 10px;
+}
+
+.culture{
+    display: flex;
+    column-gap: 10px;
+}
+
+.culture input{
+    width: 184px;
+}
+
+.carreer{
+    display: flex;
+    column-gap: 10px;
+}
+
+.carreer input{
+    width: 286px;
+}
+
+.langfeat input{
+    float: right;
+    width: 88%;
+
+}
+
+.virtues {
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    background: rgba(113,113,133,0.4);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.virtues h3 {
+    text-align: left;
+}
+
+.onevir{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+}
+
+
+.masteries {
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    background: rgba(113,113,133,0.4);
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    
+}
+
+.specbox{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.training{
+    flex: 33%;
+}
+
+.proficiency{
+    flex: 33%;
+}
+
+.lore{
+    flex: 33%;
+}
+
+.complexion{
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    background: rgba(113,113,133,0.4);
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+}
+
+.resilience {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.momentum{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.ambition{
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ambition textarea{
+    
+    height: 150px;
+    width: 250px;
+}
+
+.wounds{
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    background: rgba(113,113,133,0.4);
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.wounds textarea {
+    width: 100%;
+    height: 80px;
+}
+
+.expandsoul {
+    display: flex;
+    
+}
+
+.experience{
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    background: rgba(113,113,133,0.4);
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.soulblood {
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    background: rgba(113,113,133,0.4);
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding: 10px;
+    height: 128px;
+    width: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.soulstuff {
+    color: rgb(104, 160, 181);
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.bloodstuff {
+    color: rgb(234, 107, 119);
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.experience button {
+    height: 25px;
+    width: 180px;
+    position: relative;
+    background: rgba(30, 108, 52, 0.4);
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    color: #fff;
+}
+
+.relationships {
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    background: rgba(113,113,133,0.4);
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.relationships span {
+    margin-top: 20px;
+}
+
+.relapara {
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    background: rgba(179, 179, 198, 0.4);
+    margin-bottom: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+}
+
+.newrelapara {
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    background: rgba(144, 196, 220, 0.4);
+    margin-bottom: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+}
+
+.namepa {
+    display: flex;
+    flex-direction: column;
+    padding-top: 19px;
+}
+
+.namepa div {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.effects {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.effects textarea {
+    width: 200px;
+    height: 75px;
+}
+
+.relabel {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 10px;
+}
+
+.relabel button {
+    width: 50px;
+}
+
+.rivabel {
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 10px;
+}
+
+.rivabel button {
+    width: 50px;
+}
+
+.fatefulevents {
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    background: rgba(113,113,133,0.4);
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    column-gap: 10px;
+    text-align: center;
+}
+
+.cardeck {
+    flex: 1;
+}
+
+.fatefulevents textarea {
+    width: 100%;
+    height: 50px;
+}
+
+.inventory {
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    background: rgba(113,113,133,0.4);
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.invalues {
+    display: flex;
+    column-gap: 20px;
+}
+
+.boxes {
+    display: flex;
+    margin-top: 20px;
+}
+
+.boxes div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+}
+
+.boxes textarea {
+    height: 163px;
+}

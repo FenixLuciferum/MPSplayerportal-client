@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Fenix&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+body {
+  font-family: "Fenix", serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url('./Components/Assets/logoheader.png') no-repeat, url('./Components/Assets/blagg.png');
+  background-size: 1900px 722px , cover;
+  background-position: center;
+}
