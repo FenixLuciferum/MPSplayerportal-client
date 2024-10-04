@@ -10,7 +10,7 @@ const ForgotPassword = () => {
     const [emailForgot, setEmailForgot] = useState('')
 
     const handleForgot = () => {
-        axios.get('https://mpsplayerportal-server.vercel.app/user/forgotpassword', {
+        axios.get('http://mpsplayerportal-server.vercel.app/user/forgotpassword', {
             params: {
                 email: emailForgot
             }
