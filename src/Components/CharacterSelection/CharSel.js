@@ -25,7 +25,7 @@ function CharSel() {
 
   // Code to enhance SPA transitions
   useEffect(() => {
-    axios.get('http://mps-portal.vercel.app:5000/char/getchar', {
+    axios.get('https://mpsplayerportal-server.vercel.app/char/getchar', {
       params: {
         ownerID: pageparams.id,
       }
@@ -48,7 +48,7 @@ function CharSel() {
   const handleClick = (charid) => {
     setSelectedChar(charid);
     console.log(selectedChar);
-    window.location.replace(`http://mps-portal.vercel.app:3000/CharacterSelection/${pageparams.id}/:${charid}`);
+    window.location.replace(`https://mpsplayerportal-client.vercel.app/CharacterSelection/${pageparams.id}/:${charid}`);
 
   };
 
@@ -56,14 +56,14 @@ function CharSel() {
   //nuovo PG
   const newChar = (event) => {
     event.preventDefault();
-    axios.post('http://mps-portal.vercel.app:5000/char/newchar', {
+    axios.post('https://mpsplayerportal-server.vercel.app/char/newchar', {
       ownerID: pageparams.id,
       chaName: CharacterName,
     })
       .then(function (response) {
         event.preventDefault()
         console.log(response);
-        window.location.replace(`http://mps-portal.vercel.app:3000/CharacterSelection/${pageparams.id}`);
+        window.location.replace(`https://mpsplayerportal-client.vercel.app/CharacterSelection/${pageparams.id}`);
 
       })
       .catch(function (error) {

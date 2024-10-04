@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("tokenstore") || "");
 
   const loginAction = ({ usernameLogin, playerID }) => {
-    axios.post('http://mps-portal.vercel.app:5000/user/logsession', {
+    axios.post('https://mpsplayerportal-server.vercel.app/user/logsession', {
       user: usernameLogin,
       userID: playerID,
     })
@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
         localStorage.setItem("userstore", response.data.data.userID);
         localStorage.setItem("tokenstore", response.data.data._id);
 
-        window.location.replace(`http://mps-portal.vercel.app:3000/CharacterSelection/:${playerID}`);
+        window.location.replace(`https://mpsplayerportal-client.vercel.app/CharacterSelection/:${playerID}`);
         return;
       })
       .catch(function (error) {
@@ -31,7 +31,7 @@ const AuthProvider = ({ children }) => {
   }
 
   const logOut = (event) => {
-    axios.delete('http://mps-portal.vercel.app:5000/user/logout', {
+    axios.delete('https://mpsplayerportal-server.vercel.app/user/logout', {
       params: {tokenID: token}
     })
     .then(function (response) {
@@ -40,7 +40,7 @@ const AuthProvider = ({ children }) => {
       setUser('')
       setToken('')
       localStorage.removeItem("tokenstore");
-      window.location.replace(`http://mps-portal.vercel.app:3000`);
+      window.location.replace(`https://mpsplayerportal-client.vercel.app`);
 
     })
     .catch(function (error) {

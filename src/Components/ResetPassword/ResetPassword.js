@@ -18,7 +18,7 @@ const ForgotPassword = () => {
         if (newPassword !== sndPassword) { alert("Password not matching!\nPlease try again.") }
         else if (newPassword === '' || sndPassword === '') { alert("Input field empty") }
         else {
-            axios.patch('http://mps-portal.vercel.app:5000/user/passwordupdate', {
+            axios.patch('https://mpsplayerportal-server.vercel.app/user/passwordupdate', {
                 params: {
                     userID: (pageparams.id).substring(1),
                     newpassword: newPassword,
@@ -27,7 +27,7 @@ const ForgotPassword = () => {
                 .then(function (response) {
                     console.log(response);
                     localStorage.setItem("passwordstore", '');
-                    window.location.replace('http://mps-portal.vercel.app:3000')
+                    window.location.replace('https://mpsplayerportal-client.vercel.app')
                 }
                 )
                 .catch(function (error) {
