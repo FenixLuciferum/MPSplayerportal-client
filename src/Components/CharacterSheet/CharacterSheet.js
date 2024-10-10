@@ -50,6 +50,7 @@ function CharacterSheet() {
                     }
                 }
                 setLoaded(true);
+                console.log(charData);
             })
             .catch(function (error) {
                 console.log(error);
@@ -59,7 +60,8 @@ function CharacterSheet() {
 
     //Back to list
     const handleBack = () => {
-
+        console.log(charData);
+        debugger;
         axios.put('https://mpsplayerportal-server.vercel.app/char/save', {
             params: {
                 data: charData,
