@@ -86,6 +86,7 @@ function CharacterSheet() {
             newArr[0].tokens += 1;
         }
         setCharData(newArr);
+        console.log(charData);
     }
 
     //Handle Experience Cutout due to Ambitions
@@ -103,6 +104,7 @@ function CharacterSheet() {
             newArr[0].tokens += 1;
         }
         setCharData(newArr);
+        console.log(charData);
     }
 
     //Handle changes to charData
@@ -134,6 +136,7 @@ function CharacterSheet() {
         let newArr = [...charData];
         newArr[0][`${parvalue}`][i][`${paraobj}`] = e
         setCharData(newArr);
+        console.log(charData);
     }
 
     //Handle new Rela
@@ -147,6 +150,7 @@ function CharacterSheet() {
         setWaited(true);
         (newArr[0].relationships).push(newrela);
         setCharData(newArr);
+        console.log(charData);
 
     };
 
@@ -161,6 +165,7 @@ function CharacterSheet() {
         setWaited(true);
         (newArr[0].rivalries).push(newriva);
         setCharData(newArr);
+        console.log(charData);
 
     };
 
