@@ -47,10 +47,10 @@ function CharacterSheet() {
                 for (let i = 0; i < characters.length; i++) {
                     if (characters[i]._id === (pageparams.character).substring(1)) {
                         setCharData([characters[i]]);
+                        console.log(charData);
                     }
                 }
                 setLoaded(true);
-                console.log(charData);
             })
             .catch(function (error) {
                 console.log(error);
@@ -60,8 +60,6 @@ function CharacterSheet() {
 
     //Back to list
     const handleBack = () => {
-        console.log(charData);
-        debugger;
         axios.put('https://mpsplayerportal-server.vercel.app/char/save', {
             params: {
                 data: charData,
@@ -127,9 +125,8 @@ function CharacterSheet() {
             newArr[0].trd_tier = false;
         }
 
-        console.log(newArr[0].mw_reroll)
-
         setCharData(newArr);
+        console.log(charData);
     }
 
     //Handle changes to charData for rela/riva
