@@ -47,7 +47,6 @@ function CharacterSheet() {
                 for (let i = 0; i < characters.length; i++) {
                     if (characters[i]._id === (pageparams.character).substring(1)) {
                         setCharData([characters[i]]);
-                        console.log(charData);
                     }
                 }
                 setLoaded(true);
@@ -60,7 +59,8 @@ function CharacterSheet() {
 
     //Back to list
     const handleBack = () => {
-        axios.put('https://mpsplayerportal-server.vercel.app/char/save', {
+
+        axios.patch('https://mpsplayerportal-server.vercel.app/char/save', {
             params: {
                 data: charData,
                 char: pageparams.character,
@@ -68,12 +68,24 @@ function CharacterSheet() {
         })
             .then(function (response) {
                 console.log(response);
+                window.location.replace(`https://mpsplayerportal-client.vercel.app/CharacterSelection/${pageparams.id}`);
+                
+                /* axios.delete('https://mpsplayerportal-server.vercel.app/char/delete', {
+                    char: pageparams.character,
+                })
+                    .then(function (response) {
+                        console.log(response)
+                        window.location.replace(`https://mpsplayerportal-client.vercel.app/CharacterSelection/${pageparams.id}`);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    }); */
             })
             .catch(function (error) {
                 console.log(error);
             });
 
-        window.location.replace(`https://mpsplayerportal-client.vercel.app/CharacterSelection/${pageparams.id}`);
+
     };
 
     //Handle Experience
@@ -86,7 +98,6 @@ function CharacterSheet() {
             newArr[0].tokens += 1;
         }
         setCharData(newArr);
-        console.log(charData);
     }
 
     //Handle Experience Cutout due to Ambitions
@@ -104,7 +115,6 @@ function CharacterSheet() {
             newArr[0].tokens += 1;
         }
         setCharData(newArr);
-        console.log(charData);
     }
 
     //Handle changes to charData
@@ -127,8 +137,9 @@ function CharacterSheet() {
             newArr[0].trd_tier = false;
         }
 
+        console.log(newArr[0].mw_reroll)
+
         setCharData(newArr);
-        console.log(charData);
     }
 
     //Handle changes to charData for rela/riva
@@ -136,7 +147,6 @@ function CharacterSheet() {
         let newArr = [...charData];
         newArr[0][`${parvalue}`][i][`${paraobj}`] = e
         setCharData(newArr);
-        console.log(charData);
     }
 
     //Handle new Rela
@@ -150,7 +160,6 @@ function CharacterSheet() {
         setWaited(true);
         (newArr[0].relationships).push(newrela);
         setCharData(newArr);
-        console.log(charData);
 
     };
 
@@ -165,7 +174,6 @@ function CharacterSheet() {
         setWaited(true);
         (newArr[0].rivalries).push(newriva);
         setCharData(newArr);
-        console.log(charData);
 
     };
 
@@ -249,8 +257,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].mw_specs} placeholder={`${charData[0].mw_specs}`} onChange={(e) => handleChange(String(e.target.value), "mw_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].mw_reroll} placeholder={`${charData[0].mw_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "mw_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].mw_flaw} placeholder={`${charData[0].mw_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "mw_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].mw_reroll} placeholder={`${charData[0].mw_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "mw_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].mw_flaw} placeholder={`${charData[0].mw_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "mw_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
 
@@ -258,8 +266,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].rw_specs} placeholder={`${charData[0].rw_specs}`} onChange={(e) => handleChange(String(e.target.value), "rw_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].rw_reroll} placeholder={`${charData[0].rw_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "rw_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].rw_flaw} placeholder={`${charData[0].rw_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "rw_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].rw_reroll} placeholder={`${charData[0].rw_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "rw_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].rw_flaw} placeholder={`${charData[0].rw_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "rw_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
 
@@ -267,8 +275,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].cata_specs} placeholder={`${charData[0].cata_specs}`} onChange={(e) => handleChange(String(e.target.value), "cata_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].cata_reroll} placeholder={`${charData[0].cata_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "cata_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].cata_flaw} placeholder={`${charData[0].cata_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "cata_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].cata_reroll} placeholder={`${charData[0].cata_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "cata_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].cata_flaw} placeholder={`${charData[0].cata_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "cata_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
 
@@ -276,8 +284,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].tale_specs} placeholder={`${charData[0].tale_specs}`} onChange={(e) => handleChange(String(e.target.value), "tale_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].tale_reroll} placeholder={`${charData[0].tale_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "tale_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].tale_flaw} placeholder={`${charData[0].tale_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "tale_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].tale_reroll} placeholder={`${charData[0].tale_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "tale_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].tale_flaw} placeholder={`${charData[0].tale_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "tale_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
 
@@ -285,8 +293,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].brawl_specs} placeholder={`${charData[0].brawl_specs}`} onChange={(e) => handleChange(String(e.target.value), "brawl_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].brawl_reroll} placeholder={`${charData[0].brawl_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "brawl_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].brawl_flaw} placeholder={`${charData[0].brawl_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "brawl_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].brawl_reroll} placeholder={`${charData[0].brawl_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "brawl_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].brawl_flaw} placeholder={`${charData[0].brawl_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "brawl_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
 
@@ -294,8 +302,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].def_specs} placeholder={`${charData[0].def_specs}`} onChange={(e) => handleChange(String(e.target.value), "def_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].def_reroll} placeholder={`${charData[0].def_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "def_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].def_flaw} placeholder={`${charData[0].def_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "def_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].def_reroll} placeholder={`${charData[0].def_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "def_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].def_flaw} placeholder={`${charData[0].def_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "def_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
                             </div>
@@ -306,8 +314,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].surv_specs} placeholder={`${charData[0].surv_specs}`} onChange={(e) => handleChange(String(e.target.value), "surv_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].surv_reroll} placeholder={`${charData[0].surv_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "surv_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].surv_flaw} placeholder={`${charData[0].surv_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "surv_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].surv_reroll} placeholder={`${charData[0].surv_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "surv_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].surv_flaw} placeholder={`${charData[0].surv_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "surv_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
 
@@ -315,8 +323,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].ex_specs} placeholder={`${charData[0].ex_specs}`} onChange={(e) => handleChange(String(e.target.value), "ex_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].ex_reroll} placeholder={`${charData[0].ex_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "ex_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].ex_flaw} placeholder={`${charData[0].ex_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "ex_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].ex_reroll} placeholder={`${charData[0].ex_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "ex_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].ex_flaw} placeholder={`${charData[0].ex_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "ex_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
 
@@ -324,8 +332,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].sub_specs} placeholder={`${charData[0].sub_specs}`} onChange={(e) => handleChange(String(e.target.value), "sub_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].sub_reroll} placeholder={`${charData[0].sub_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "sub_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].sub_flaw} placeholder={`${charData[0].sub_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "sub_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].sub_reroll} placeholder={`${charData[0].sub_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "sub_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].sub_flaw} placeholder={`${charData[0].sub_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "sub_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
 
@@ -333,8 +341,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].per_specs} placeholder={`${charData[0].per_specs}`} onChange={(e) => handleChange(String(e.target.value), "per_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].per_reroll} placeholder={`${charData[0].per_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "per_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].per_flaw} placeholder={`${charData[0].per_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "per_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].per_reroll} placeholder={`${charData[0].per_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "per_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].per_flaw} placeholder={`${charData[0].per_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "per_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
 
@@ -342,8 +350,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].art_specs} placeholder={`${charData[0].art_specs}`} onChange={(e) => handleChange(String(e.target.value), "art_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].art_reroll} placeholder={`${charData[0].art_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "art_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].art_flaw} placeholder={`${charData[0].art_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "art_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].art_reroll} placeholder={`${charData[0].art_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "art_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].art_flaw} placeholder={`${charData[0].art_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "art_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
 
@@ -351,8 +359,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].med_specs} placeholder={`${charData[0].med_specs}`} onChange={(e) => handleChange(String(e.target.value), "med_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].med_reroll} placeholder={`${charData[0].med_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "med_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].med_flaw} placeholder={`${charData[0].med_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "med_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].med_reroll} placeholder={`${charData[0].med_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "med_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].med_flaw} placeholder={`${charData[0].med_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "med_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
                             </div>
@@ -363,8 +371,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].aca_specs} placeholder={`${charData[0].aca_specs}`} onChange={(e) => handleChange(String(e.target.value), "aca_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].aca_reroll} placeholder={`${charData[0].aca_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "aca_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].aca_flaw} placeholder={`${charData[0].aca_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "aca_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].aca_reroll} placeholder={`${charData[0].aca_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "aca_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].aca_flaw} placeholder={`${charData[0].aca_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "aca_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
 
@@ -372,8 +380,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].urb_specs} placeholder={`${charData[0].urb_specs}`} onChange={(e) => handleChange(String(e.target.value), "urb_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].urb_reroll} placeholder={`${charData[0].urb_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "urb_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].urb_flaw} placeholder={`${charData[0].urb_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "urb_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].urb_reroll} placeholder={`${charData[0].urb_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "urb_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].urb_flaw} placeholder={`${charData[0].urb_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "urb_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
 
@@ -381,8 +389,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].arcane_specs} placeholder={`${charData[0].arcane_specs}`} onChange={(e) => handleChange(String(e.target.value), "arcane_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].arcane_reroll} placeholder={`${charData[0].arcane_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "arcane_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].arcane_flaw} placeholder={`${charData[0].arcane_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "arcane_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].arcane_reroll} placeholder={`${charData[0].arcane_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "arcane_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].arcane_flaw} placeholder={`${charData[0].arcane_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "arcane_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
 
@@ -390,8 +398,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].kosm_specs} placeholder={`${charData[0].kosm_specs}`} onChange={(e) => handleChange(String(e.target.value), "kosm_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].kosm_reroll} placeholder={`${charData[0].kosm_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "kosm_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].kosm_flaw} placeholder={`${charData[0].kosm_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "kosm_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].kosm_reroll} placeholder={`${charData[0].kosm_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "kosm_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].kosm_flaw} placeholder={`${charData[0].kosm_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "kosm_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
 
@@ -399,8 +407,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].eso_specs} placeholder={`${charData[0].eso_specs}`} onChange={(e) => handleChange(String(e.target.value), "eso_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].eso_reroll} placeholder={`${charData[0].eso_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "eso_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].eso_flaw} placeholder={`${charData[0].eso_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "eso_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].eso_reroll} placeholder={`${charData[0].eso_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "eso_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].eso_flaw} placeholder={`${charData[0].eso_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "eso_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
 
@@ -408,8 +416,8 @@ function CharacterSheet() {
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].nat_specs} placeholder={`${charData[0].nat_specs}`} onChange={(e) => handleChange(String(e.target.value), "nat_specs")} />
                                     <div>
-                                        <input type="checkbox" value={charData[0].nat_reroll} placeholder={`${charData[0].nat_reroll}`} onChange={(e) => handleChange(Boolean(e.target.checked), "nat_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
-                                        <input type="checkbox" value={charData[0].nat_flaw} placeholder={`${charData[0].nat_flaw}`} onChange={(e) => handleChange(Boolean(e.target.checked), "nat_flaw")} />Flaw <FaExclamationCircle />
+                                        <input type="checkbox" value={charData[0].nat_reroll} placeholder={`${charData[0].nat_reroll}`} onChange={(e) => handleChange(Boolean(e.target.value), "nat_reroll")} />Reroll <MdOutlineSettingsBackupRestore />
+                                        <input type="checkbox" value={charData[0].nat_flaw} placeholder={`${charData[0].nat_flaw}`} onChange={(e) => handleChange(Boolean(e.target.value), "nat_flaw")} />Flaw <FaExclamationCircle />
                                     </div>
                                 </div>
                             </div>
