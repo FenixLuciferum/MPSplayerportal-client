@@ -14,6 +14,6 @@ body {
   align-items: center;
   min-height: 100vh;
   background: url('./Components/Assets/logoheader.png') no-repeat, url('./Components/Assets/blagg.png');
-  background-size: 1900px 722px , cover;
+  background-size: 1850px 703px , cover;
   background-position: center;
 }
