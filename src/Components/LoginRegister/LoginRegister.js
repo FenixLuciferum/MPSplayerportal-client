@@ -8,6 +8,7 @@ import { MdEmail } from "react-icons/md";
 const LoginRegister = () => {
 
     const [action, setAction] = useState('');
+    const [clickedregister, setClickedregister] = useState('');
     const [usernameRegister, setUsernameRegister] = useState('');
     const [passwordRegister, setPasswordRegister] = useState('');
     const [emailRegister, setEmailRegister] = useState('');
@@ -64,6 +65,7 @@ const LoginRegister = () => {
         })
             .then(function (response) {
                 console.log(response);
+                setClickedregister(' clicked')
             })
             .catch(function (error) {
                 console.log(error);
@@ -159,6 +161,10 @@ const LoginRegister = () => {
                     <div className="register-link">
                         <p>Already have an account?
                             <a href='#' onClick={loginLink}> Login</a></p>
+                    </div>
+
+                    <div className = {`checkregister${clickedregister}`}>
+                        <i>Check your Email for the Validation Link</i>
                     </div>
 
                 </form>

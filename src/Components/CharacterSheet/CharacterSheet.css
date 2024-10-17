@@ -39,7 +39,7 @@
 }
 
 .backbutton {
-    height: 75px;
+    height: 50px;
     width: 210px;
     position: relative;
     background: rgba(113,113,133,0.4);
@@ -50,15 +50,53 @@
 }
 
 .backbutton.hover {
-    height: 75px;
-    width: 210px;
-    position: relative;
     background: rgba(193,13,33,1);
     background: linear-gradient(180deg, rgba(193,13,33,1) 0%, rgba(52,0,150,1) 100%);
     border: 2px solid rgba(255, 255, 255, .1);
     border-radius: 10px;
     color: #fff;
 }
+
+.backnosave {
+    height: 50px;
+    width: 210px;
+    position: absolute;
+    margin-left: 500px;
+    background: rgba(113,113,133,0.4);
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.backnosave.hover {
+    background: rgba(193,13,33,1);
+    background: linear-gradient(180deg, rgba(193,13,33,1) 0%, rgba(52,0,150,1) 100%);
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    color: #fff;
+}
+
+.delete {
+    height: 50px;
+    width: 210px;
+    position: absolute;
+    margin-right: 500px;
+    background: rgba(113,113,133,0.4);
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.delete.hover {
+    background: rgba(193,13,33,1);
+    background: linear-gradient(180deg, rgba(193,13,33,1) 0%, rgba(52,0,150,1) 100%);
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    color: #fff;
+}
+
 
 .sheetwrapper{
     display: flex;
@@ -134,10 +172,15 @@
     
 }
 
+.masteries textarea {
+    height: 50px;
+}
+
 .specbox{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    margin-bottom: 5px;
 }
 
 .training{
@@ -375,4 +418,9 @@
 
 .boxes textarea {
     height: 163px;
+}
+
+.relarivahelp {
+    margin-bottom: 5px;
+    color: rgb(155, 155, 155);
 }

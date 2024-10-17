@@ -154,3 +154,14 @@ form .register-link {
 .register-link p a:hover {
     text-decoration: underline;
 }
+
+.checkregister {
+    translate: 400px;
+    text-align: center;
+    transition: translate 0.5s ease;
+}
+
+.checkregister.clicked {
+    transition: translate 0.5s ease;
+    translate: 0px
+}
