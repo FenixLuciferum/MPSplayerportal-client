@@ -309,13 +309,13 @@ function CharacterSheet() {
                                     
                                 </div>
 
-                                Catalysts: <input type="number" min="0" max="6" value={charData[0].catalysts} placeholder={`${charData[0].catalysts}`} onChange={(e) => handleChange(Number(e.target.value), "catalysts")} />
+                                Exploration: <input type="number" min="0" max="6" value={charData[0].catalysts} placeholder={`${charData[0].catalysts}`} onChange={(e) => handleChange(Number(e.target.value), "catalysts")} />
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].cata_specs} placeholder={`${charData[0].cata_specs}`} onChange={(e) => handleChange(String(e.target.value), "cata_specs")} />
                                     
                                 </div>
 
-                                Talents: <input type="number" min="0" max="6" value={charData[0].talents} placeholder={`${charData[0].talents}`} onChange={(e) => handleChange(Number(e.target.value), "talents")} />
+                                Maneuvering: <input type="number" min="0" max="6" value={charData[0].talents} placeholder={`${charData[0].talents}`} onChange={(e) => handleChange(Number(e.target.value), "talents")} />
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].tale_specs} placeholder={`${charData[0].tale_specs}`} onChange={(e) => handleChange(String(e.target.value), "tale_specs")} />
                                     
@@ -342,7 +342,7 @@ function CharacterSheet() {
                                     
                                 </div>
 
-                                Exploring: <input type="number" min="0" max="6" value={charData[0].exploring} placeholder={`${charData[0].exploring}`} onChange={(e) => handleChange(Number(e.target.value), "exploring")} />
+                                Awareness: <input type="number" min="0" max="6" value={charData[0].exploring} placeholder={`${charData[0].exploring}`} onChange={(e) => handleChange(Number(e.target.value), "exploring")} />
                                 <div className={'specbox'}>
                                     <textarea value={charData[0].ex_specs} placeholder={`${charData[0].ex_specs}`} onChange={(e) => handleChange(String(e.target.value), "ex_specs")} />
                                     
